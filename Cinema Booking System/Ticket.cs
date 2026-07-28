@@ -25,7 +25,7 @@ namespace Cinema_Booking_System
             Seat = seat;
             Price = price;
         }
-        public Ticket(string MovieName) :this(MovieName, TicketType.Standard, new SeatLocation { Row = 'A', Column = 1 }, 50)
+        public Ticket(string MovieName) : this(MovieName, TicketType.Standard, new SeatLocation { Row = 'A', Column = 1 }, 50)
         {
         }
         static double TaxPercent = 0.14;
@@ -39,5 +39,24 @@ namespace Cinema_Booking_System
             double PriceWithTax = Price + (Price * TaxPercent);
             return PriceWithTax;
         }
+        public void ApplyDiscount(double discountAmount)
+        {
+            if (discountAmount > 0 || discountAmount < Price)
+            {
+                Price = CalcTotal() - discountAmount;
+                Console.WriteLine("===== After Discount =====");
+                Console.WriteLine($"Discount Before     : {discountAmount}");
+                discountAmount = 0;
+                Console.WriteLine($"Discount After      : {discountAmount}");
+                Console.WriteLine($"Price After Discount: {Price}");
+            }
+            else
+            {
+                Console.WriteLine("Invalid Discount Amount!");
+            }
+            Console.WriteLine($"Movie   : {MovieName}");
+            Console.WriteLine($"Type    : {Type}");
+        }
+
     }
 }
