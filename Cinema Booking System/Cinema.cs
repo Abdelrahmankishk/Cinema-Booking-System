@@ -58,5 +58,16 @@ namespace Cinema_Booking_System
             }
             return false;
         }
+
+        public void AllTickets()
+        {
+            foreach (var ticket in _Tickets)
+            {
+                if (ticket != null)
+                {
+                    Console.WriteLine($"Ticket #{ticket.ID} | {ticket.MovieName} | {ticket.Type} | Seat: {ticket.Seat.Row}-{ticket.Seat.Number} | Price: {ticket.Price} EGP | After Tax: {ticket.PriceAfterTax} EGP");
+                }
+            }
+        }
     }
 }

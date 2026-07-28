@@ -1,4 +1,5 @@
 ﻿using System.Net.Sockets;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Cinema_Booking_System
 {
@@ -14,6 +15,7 @@ namespace Cinema_Booking_System
             double Discount = default;
 
             Ticket ticket = ConsoleHelper.TicketInput(movieName!, ticketType, seatLocation, ticketPrice, Discount);
+
 
         }
     }

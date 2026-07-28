@@ -19,7 +19,7 @@ namespace Cinema_Booking_System
     }
     public class Ticket
     {
-        private int ID;
+        public int ID;
         public Ticket(string movieName, TicketType type, SeatLocation seat, double price)
         {
             MovieName = movieName;
@@ -50,7 +50,7 @@ namespace Cinema_Booking_System
         }
         public TicketType Type { get; set; }
         public SeatLocation Seat { get; set; }
-        double Price { get { return price; } set { if (value > 0) price = value; } }
+        public double Price { get { return price; } set { if (value > 0) price = value; } }
 
         public double PriceAfterTax => Price + (Price * TaxPercent);
         public void ApplyDiscount(double discountAmount)
