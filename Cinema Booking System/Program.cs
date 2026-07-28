@@ -54,6 +54,14 @@ namespace Cinema_Booking_System
                 Console.ResetColor();
             }
             #endregion
+
+            #region Generating and print 2 booking references
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("========== Generating Booking References ==========");
+            Console.ResetColor();
+            Console.WriteLine($"Booking Reference 1: {BookingHelper.GenerateBookingReference()}");
+            Console.WriteLine($"Booking Reference 2: {BookingHelper.GenerateBookingReference()}");
+            #endregion
         }
     }
 }
