@@ -8,8 +8,9 @@ namespace Cinema_Booking_System
 {
     public class ConsoleHelper
     {
-        public static void PartOneBookingSummary(string movieName, int ticketType, SeatLocation seatLocation, double ticketPrice,double Discount)
+        public static Ticket TicketInput(string movieName, int ticketType, SeatLocation seatLocation, double ticketPrice,double Discount)
         {
+            Ticket ticket = default!;
             bool exit = false;
             do
             {
@@ -52,11 +53,8 @@ namespace Cinema_Booking_System
                         throw new Exception("Discount cannot be negative.");
                     }
 
-                    Ticket ticket = new Ticket(movieName, (TicketType)ticketType, seatLocation, ticketPrice);
-                    Console.WriteLine();
-                    ticket.PrintTicket();
-                    Console.WriteLine();
-                    ticket.ApplyDiscount(Discount);
+                    ticket = new Ticket(movieName, (TicketType)ticketType, seatLocation, ticketPrice);
+                    
                     exit = !exit;
                 }
                 catch (Exception ex)
@@ -67,9 +65,9 @@ namespace Cinema_Booking_System
                 }
             }
             while (!exit);
-
+             return ticket;
         }
 
-
+        
     }
 }

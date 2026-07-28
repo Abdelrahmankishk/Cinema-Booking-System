@@ -1,4 +1,6 @@
-﻿namespace Cinema_Booking_System
+﻿using System.Net.Sockets;
+
+namespace Cinema_Booking_System
 {
     internal class Program
     {
@@ -10,8 +12,9 @@
             SeatLocation seatLocation = new();
             double ticketPrice = default;
             double Discount = default;
-            
-            ConsoleHelper.PartOneBookingSummary(movieName!, ticketType, seatLocation, ticketPrice, Discount);
+
+            Ticket ticket = ConsoleHelper.TicketInput(movieName!, ticketType, seatLocation, ticketPrice, Discount);
+
         }
     }
 }
