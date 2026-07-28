@@ -33,13 +33,9 @@ namespace Cinema_Booking_System
         {
             get {
                 foreach (var ticket in _Tickets) { 
-                 if (ticket != null && ticket.MovieName == movieName)
+                 if (ticket != null && ticket.MovieName.ToLower() == movieName.ToLower())
                     {
                         return ticket;
-                    }
-                 else
-                    {
-                        return null!;
                     }
                 }
                 return null!;
@@ -61,6 +57,10 @@ namespace Cinema_Booking_System
 
         public void AllTickets()
         {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("========== All Tickets ==========");
+            Console.WriteLine();
+            Console.ResetColor();
             foreach (var ticket in _Tickets)
             {
                 if (ticket != null)

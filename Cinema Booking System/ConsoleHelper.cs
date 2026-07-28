@@ -65,6 +65,7 @@ namespace Cinema_Booking_System
                 }
             }
             while (!exit);
+            Console.WriteLine();
              return ticket;
         }
 
