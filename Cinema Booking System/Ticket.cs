@@ -58,5 +58,15 @@ namespace Cinema_Booking_System
             Console.WriteLine($"Type    : {Type}");
         }
 
+        public void PrintTicket()
+        {
+                Console.WriteLine("===== Ticket Info =====");
+                Console.WriteLine($"Movie   : {MovieName}");
+                Console.WriteLine($"Type    : {Type}");
+                Console.WriteLine($"Seat    : {Seat.Row}{Seat.Column}");
+                Console.WriteLine($"Price   : {Price}");
+                Console.WriteLine($"Total (14% tax)   : {CalcTotal()}");
+        }
+
     }
 }
