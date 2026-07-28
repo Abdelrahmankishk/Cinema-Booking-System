@@ -14,7 +14,7 @@ namespace Cinema_Booking_System
     }
     public struct SeatLocation {
         public char Row;
-        public int Column;
+        public int Number;
     }
     public class Ticket
     {
@@ -25,7 +25,7 @@ namespace Cinema_Booking_System
             Seat = seat;
             Price = price;
         }
-        public Ticket(string MovieName) : this(MovieName, TicketType.Standard, new SeatLocation { Row = 'A', Column = 1 }, 50)
+        public Ticket(string MovieName) : this(MovieName, TicketType.Standard, new SeatLocation { Row = 'A', Number = 1 }, 50)
         {
         }
         static double TaxPercent = 0.14;
@@ -34,28 +34,33 @@ namespace Cinema_Booking_System
         public SeatLocation Seat { get; set; }
         double Price { get; set; }
 
-        public double CalcTotal()
+        double CalcTotal()
         {
             double PriceWithTax = Price + (Price * TaxPercent);
             return PriceWithTax;
         }
         public void ApplyDiscount(double discountAmount)
         {
-            if (discountAmount > 0 || discountAmount < Price)
+            if (discountAmount < Price)
             {
                 Price = CalcTotal() - discountAmount;
                 Console.WriteLine("===== After Discount =====");
-                Console.WriteLine($"Discount Before     : {discountAmount}");
+                Console.WriteLine($"Discount Before     : {discountAmount:N2}");
                 discountAmount = 0;
-                Console.WriteLine($"Discount After      : {discountAmount}");
-                Console.WriteLine($"Price After Discount: {Price}");
+                Console.WriteLine($"Discount After      : {discountAmount:N2}");
+                Console.WriteLine($"Price After Discount: {Price:N2}");
+                Console.WriteLine($"Movie : {MovieName}");
+                Console.WriteLine($"Type  : {Type}");
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid Discount Amount!");
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine("NO DISCOUNT APPLIED!");
+                Console.ResetColor();
             }
-            Console.WriteLine($"Movie   : {MovieName}");
-            Console.WriteLine($"Type    : {Type}");
+
         }
 
         public void PrintTicket()
@@ -63,9 +68,9 @@ namespace Cinema_Booking_System
                 Console.WriteLine("===== Ticket Info =====");
                 Console.WriteLine($"Movie   : {MovieName}");
                 Console.WriteLine($"Type    : {Type}");
-                Console.WriteLine($"Seat    : {Seat.Row}{Seat.Column}");
-                Console.WriteLine($"Price   : {Price}");
-                Console.WriteLine($"Total (14% tax)   : {CalcTotal()}");
+                Console.WriteLine($"Seat    : {Seat.Row}{Seat.Number}");
+                Console.WriteLine($"Price   : {Price:N2}");
+                Console.WriteLine($"Total (14% tax)   : {CalcTotal():N2}");
         }
 
     }
