@@ -28,12 +28,16 @@ namespace Cinema_Booking_System
         public Ticket(string MovieName) :this(MovieName, TicketType.Standard, new SeatLocation { Row = 'A', Column = 1 }, 50)
         {
         }
-
-public string MovieName { get; set; }
+        static double TaxPercent = 0.14;
+        public string MovieName { get; set; }
         public TicketType Type { get; set; }
         public SeatLocation Seat { get; set; }
         double Price { get; set; }
 
-        
+        public double CalcTotal()
+        {
+            double PriceWithTax = Price + (Price * TaxPercent);
+            return PriceWithTax;
+        }
     }
 }
