@@ -104,7 +104,7 @@ BK-2
 1. Clone the repository.
 
 ```bash
-git clone https://github.com/<your-username>/Cinema-Booking-System.git
+git clone https://github.com/Abdelrahmankishk/Cinema-Booking-System.git
 ```
 
 2. Open the solution in Visual Studio.
