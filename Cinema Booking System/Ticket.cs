@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,32 +19,45 @@ namespace Cinema_Booking_System
     }
     public class Ticket
     {
+        private int ID;
         public Ticket(string movieName, TicketType type, SeatLocation seat, double price)
         {
             MovieName = movieName;
             Type = type;
             Seat = seat;
             Price = price;
+            ticketCounter++;
+            ID = ticketCounter;
         }
         public Ticket(string MovieName) : this(MovieName, TicketType.Standard, new SeatLocation { Row = 'A', Number = 1 }, 50)
         {
         }
+        static int ticketCounter = 0;
         static double TaxPercent = 0.14;
-        public string MovieName { get; set; }
+        private string movieName;
+        private double price;
+
+        public string MovieName
+        {
+            get { return movieName; }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    movieName = value;
+                }
+            }
+        }
         public TicketType Type { get; set; }
         public SeatLocation Seat { get; set; }
-        double Price { get; set; }
+        double Price { get { return price; } set { if (value > 0) price = value; } }
 
-        double CalcTotal()
-        {
-            double PriceWithTax = Price + (Price * TaxPercent);
-            return PriceWithTax;
-        }
+        public double PriceAfterTax => Price + (Price * TaxPercent);
         public void ApplyDiscount(double discountAmount)
         {
             if (discountAmount < Price)
             {
-                Price = CalcTotal() - discountAmount;
+                Price = PriceAfterTax - discountAmount;
                 Console.WriteLine("===== After Discount =====");
                 Console.WriteLine($"Discount Before     : {discountAmount:N2}");
                 discountAmount = 0;
@@ -70,8 +84,12 @@ namespace Cinema_Booking_System
                 Console.WriteLine($"Type    : {Type}");
                 Console.WriteLine($"Seat    : {Seat.Row}{Seat.Number}");
                 Console.WriteLine($"Price   : {Price:N2}");
-                Console.WriteLine($"Total (14% tax)   : {CalcTotal():N2}");
+                Console.WriteLine($"Total (14% tax)   : {PriceAfterTax:N2}");
         }
 
+        public int GetTotalTicketsSold()
+        {
+            return ticketCounter;
+        }
     }
 }
