@@ -7,23 +7,28 @@ The project begins with basic ticket booking functionality and gradually evolves
 
 ## 📖 Project Overview
 
-The application allows users to book movie tickets through a console interface. The current implementation focuses on the core ticket booking process, including ticket creation, seat assignment, pricing, tax calculation, and discount handling.
+The application allows users to book and manage movie tickets through a console interface. It now supports ticket creation, seat assignment, pricing, tax calculation, ticket management, movie searching, automatic ticket identification, booking reference generation, and group discount calculations while demonstrating core Object-Oriented Programming (OOP) principles in C#.
 
 ---
 
 ## ✨ Features
 
-- Book a movie ticket through the console.
+- Book movie tickets through a console interface.
 - Choose a ticket type:
   - Standard
   - VIP
   - IMAX
-- Assign a seat using a custom `Seat` structure.
+- Assign seats using a custom `SeatLocation` struct.
 - Create tickets using overloaded constructors.
-- Use constructor chaining to eliminate duplicate initialization logic.
-- Calculate the total ticket price including tax.
-- Apply discounts with validation.
-- Display a formatted ticket summary.
+- Encapsulate ticket data using properties with validation.
+- Automatically calculate the ticket price after 14% tax.
+- Generate unique ticket IDs automatically.
+- Track the total number of tickets created.
+- Store and manage tickets inside a `Cinema` class.
+- Retrieve tickets by index using an indexer.
+- Search for tickets by movie name.
+- Generate unique booking reference numbers.
+- Calculate discounted prices for group bookings.
 
 ---
 
@@ -33,9 +38,15 @@ The application allows users to book movie tickets through a console interface. 
 - Structs
 - Classes
 - Encapsulation
+- Properties
 - Constructor Overloading
 - Constructor Chaining
-- Methods
+- Static Fields
+- Static Methods
+- Static Utility Classes
+- Indexers
+- Arrays
+- Data Validation
 - Console Input & Output
 
 ---
@@ -43,26 +54,46 @@ The application allows users to book movie tickets through a console interface. 
 ## 💻 Sample Output
 
 ```text
-Enter Movie Name: Obsession
-Enter Ticket Type (0 = Standard , 1 = VIP , 2 = IMAX ): 2
-Enter Seat Row (A, B, C...): d
-Enter Seat Number: 6
-Enter Price: 200
-Enter Discount Amount: 30
+========== Ticket Booking ==========
 
-===== Ticket Info =====
-Movie   : Obsession
-Type    : IMAX
-Seat    : D6
-Price   : 200.00
-Total (14% tax)   : 228.00
+Enter data for Ticket 1:
+Movie Name: Inception
+Ticket Type (0=Standard, 1=VIP, 2=IMAX): 1
+Seat Row (A-Z): B
+Seat Number: 5
+Price: 120
 
-===== After Discount =====
-Discount Before     : 30.00
-Discount After      : 0.00
-Price After Discount: 198.00
-Movie : Obsession
-Type  : IMAX
+Enter data for Ticket 2:
+Movie Name: Avengers
+Ticket Type (0=Standard, 1=VIP, 2=IMAX): 0
+Seat Row (A-Z): A
+Seat Number: 3
+Price: 80
+
+Enter data for Ticket 3:
+Movie Name: Dune
+Ticket Type (0=Standard, 1=VIP, 2=IMAX): 2
+Seat Row (A-Z): C
+Seat Number: 10
+Price: 200
+
+========== All Tickets ==========
+
+Ticket #1 | Inception | VIP | Seat: B-5 | Price: 120 EGP | After Tax: 136.8 EGP
+Ticket #2 | Avengers | Standard | Seat: A-3 | Price: 80 EGP | After Tax: 91.2 EGP
+Ticket #3 | Dune | IMAX | Seat: C-10 | Price: 200 EGP | After Tax: 228 EGP
+
+========== Search by Movie ==========
+
+Enter movie name to search: Avengers
+
+Found:
+Ticket #2 | Avengers | Standard | Seat: A-3 | Price: 80 EGP
+
+Booking References:
+BK-1
+BK-2
+
 ```
 
 ---
