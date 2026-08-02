@@ -17,19 +17,18 @@ namespace Cinema_Booking_System
         public char Row;
         public int Number;
     }
-    public class Ticket
+    public abstract class Ticket
     {
         public int ID;
-        public Ticket(string movieName, TicketType type, SeatLocation seat, double price)
+        public Ticket(string movieName, TicketType type, double price)
         {
             MovieName = movieName;
             Type = type;
-            Seat = seat;
             Price = price;
             ticketCounter++;
             ID = ticketCounter;
         }
-        public Ticket(string MovieName) : this(MovieName, TicketType.Standard, new SeatLocation { Row = 'A', Number = 1 }, 50)
+        public Ticket(string MovieName) : this(MovieName, TicketType.Standard, 50)
         {
         }
         static int ticketCounter = 0;
@@ -87,9 +86,14 @@ namespace Cinema_Booking_System
                 Console.WriteLine($"Total (14% tax)   : {PriceAfterTax:N2}");
         }
 
-        public int GetTotalTicketsSold()
+        public int GetTotalTickets()
         {
             return ticketCounter;
+        }
+
+        public override string ToString()
+        {
+            return $"Ticket #{ID}| Type: {Type} | {movieName} | Price: {Price} EGP | After Tax: {PriceAfterTax} EGP";
         }
     }
 }
