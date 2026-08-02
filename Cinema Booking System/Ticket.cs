@@ -84,14 +84,18 @@ namespace Cinema_Booking_System
                 Console.WriteLine($"Total (14% tax)   : {PriceAfterTax:N2}");
         }
 
-        public int GetTotalTickets()
+        public static void GetTotalTickets()
         {
-            return ticketCounter;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("========== Statistics ==========");
+            Console.ResetColor();
+            Console.WriteLine($"Total Tickets Created: {ticketCounter}");
+            Console.WriteLine();
         }
 
         public override string ToString()
         {
-            return $"Ticket #{ID}| Type: {Type} | {movieName} | Price: {Price} EGP | After Tax: {PriceAfterTax} EGP";
+            return $"Ticket #{ID} | Type: {Type} | {movieName} | Price: {Price} EGP | After Tax: {PriceAfterTax} EGP";
         }
     }
 }

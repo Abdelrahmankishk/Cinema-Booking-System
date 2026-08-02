@@ -60,10 +60,10 @@ namespace Cinema_Booking_System
                             ticket = new StandardTicket(movieName, ticketPrice, seatLocation);
                             break;
                         case 1:
-                            ticket = new VIPTicket(movieName, ticketPrice, false);
+                            ticket = new VIPTicket(movieName, ticketPrice, true);
                             break;
                         case 2:
-                            ticket = new IMAXTicket(movieName, ticketPrice, false);
+                            ticket = new IMAXTicket(movieName, ticketPrice, true);
                             break;
                         default:
                             ticket = new StandardTicket(movieName, ticketPrice, seatLocation);

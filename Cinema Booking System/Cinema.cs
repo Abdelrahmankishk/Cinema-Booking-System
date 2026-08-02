@@ -29,6 +29,7 @@ namespace Cinema_Booking_System
         public string? CinemaName { get; }
         Ticket[] _Tickets = new Ticket[20];
 
+
         public Ticket this[int index]
         {
             get
@@ -78,15 +79,15 @@ namespace Cinema_Booking_System
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("========== All Tickets ==========");
-            Console.WriteLine();
             Console.ResetColor();
             foreach (var ticket in _Tickets)
             {
                 if (ticket != null)
                 {
-                    Console.WriteLine($"Ticket #{ticket.ID} | {ticket.MovieName} | {ticket.Type} | Seat: {ticket.Seat.Row}-{ticket.Seat.Number} | Price: {ticket.Price} EGP | After Tax: {ticket.PriceAfterTax} EGP");
+                    Console.WriteLine(ticket);
                 }
             }
+            Console.WriteLine();
         }
         public void OpenCinema() { 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -94,11 +95,12 @@ namespace Cinema_Booking_System
             Console.ResetColor();
             Projector.StartProjector();
         }
-        public void CloseCinema() { 
+        public void CloseCinema() {
+            Projector.StopProjector();
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("========== Cinema Closed ==========");
             Console.ResetColor();
-            Projector.StopProjector();
+       
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Cinema_Booking_System
 
         public override string ToString()
         {
-            return base.ToString() + $" | Seat: {Seat.Row}{Seat.Number}";
+            return base.ToString() + $" | Seat: {Seat.Row}-{Seat.Number}";
         }
     }
 }

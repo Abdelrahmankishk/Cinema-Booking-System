@@ -18,7 +18,7 @@ namespace Cinema_Booking_System
 
         public override string ToString()
         {
-            return base.ToString() + $" | Lounge Access: {hasLoungeAccess} | Service Fee: {ServiceFee} EGP";
+            return base.ToString() + $" | Lounge Access: {(hasLoungeAccess ? "Yes" : "No")} | Service Fee: {ServiceFee} EGP";
         }
     }
 }

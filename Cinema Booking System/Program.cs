@@ -16,11 +16,11 @@ namespace Cinema_Booking_System
             double ticketPrice = default;
             double Discount = default;
 
-            //Ticket ticket = ConsoleHelper.TicketInput(movieName!, ticketType, seatLocation, ticketPrice, Discount);
+            cinema.OpenCinema();
+
             #region Ticket Booking
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("========== Ticket Booking ==========");
-            Console.WriteLine();
             Console.ResetColor();
             for (int i = 0; i < NumberofTickets; i++)
             {
@@ -34,25 +34,26 @@ namespace Cinema_Booking_System
             #endregion
 
             cinema.AllTickets();
-
+            Ticket.GetTotalTickets();
+            
             #region Search by Movie
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("========== Search by Movie ==========");
-            Console.ResetColor();
+            //Console.ForegroundColor = ConsoleColor.Green;
+            //Console.WriteLine("========== Search by Movie ==========");
+            //Console.ResetColor();
 
-            Ticket searchedTicket = cinema["Avengers"];
-            if (searchedTicket != null)
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine($"Found: Ticket #{searchedTicket.ID} | {searchedTicket.MovieName} | {searchedTicket.Type} | Seat: {searchedTicket.Seat.Row}-{searchedTicket.Seat.Number} | Price: {searchedTicket.Price} EGP | After Tax: {searchedTicket.PriceAfterTax} EGP");
-                Console.ResetColor();
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("NOT FOUND!");
-                Console.ResetColor();
-            }
+            //Ticket searchedTicket = cinema["Avengers"];
+            //if (searchedTicket != null)
+            //{
+            //    Console.ForegroundColor = ConsoleColor.Cyan;
+            //    Console.WriteLine($"Found: Ticket #{searchedTicket.ID} | {searchedTicket.MovieName} | {searchedTicket.Type} | Seat: {searchedTicket.Seat.Row}-{searchedTicket.Seat.Number} | Price: {searchedTicket.Price} EGP | After Tax: {searchedTicket.PriceAfterTax} EGP");
+            //    Console.ResetColor();
+            //}
+            //else
+            //{
+            //    Console.ForegroundColor = ConsoleColor.DarkRed;
+            //    Console.WriteLine("NOT FOUND!");
+            //    Console.ResetColor();
+            //}
             #endregion
 
             #region Generating and print 2 booking references
@@ -62,6 +63,8 @@ namespace Cinema_Booking_System
             Console.WriteLine($"Booking Reference 1: {BookingHelper.GenerateBookingReference()}");
             Console.WriteLine($"Booking Reference 2: {BookingHelper.GenerateBookingReference()}");
             #endregion
+
+            cinema.CloseCinema();
         }
     }
 }
