@@ -84,10 +84,17 @@ namespace Cinema_Booking_System
             {
                 if (ticket != null)
                 {
-                    Console.WriteLine(ticket);
+                    Console.WriteLine(ticket.PrintTicket());
                 }
             }
             Console.WriteLine();
+        }
+        public static void ProcessTicket(Ticket ticket)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("========== Process Single Ticket ==========");
+            Console.WriteLine(ticket.PrintTicket());
+            Console.ResetColor();
         }
         public void OpenCinema() { 
             Console.ForegroundColor = ConsoleColor.Green;

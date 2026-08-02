@@ -101,6 +101,8 @@ namespace Cinema_Booking_System
         {
             if (price > 0)
             {
+
+                Console.WriteLine($"Setting price directly: {price}");
                 Price = price;
             }
             else
@@ -112,6 +114,7 @@ namespace Cinema_Booking_System
         {
             if (Base > 0 && multiplier > 0)
             {
+                Console.WriteLine($"Setting price using multiplier: {multiplier}");
                 Price = Base * multiplier;
             }
             else

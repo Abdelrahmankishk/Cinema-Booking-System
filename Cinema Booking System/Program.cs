@@ -33,9 +33,17 @@ namespace Cinema_Booking_System
             }
             #endregion
 
+
+            Ticket test = new VIPTicket("Avengers", 200, true);
+            Console.WriteLine("========== SetPrice Test ==========");
+            test.setPrice(150);
+            test.setPrice(150, 1.5f);
+
             cinema.AllTickets();
             Ticket.GetTotalTickets();
-            
+
+           Cinema.ProcessTicket(test);
+
             #region Search by Movie
             //Console.ForegroundColor = ConsoleColor.Green;
             //Console.WriteLine("========== Search by Movie ==========");
