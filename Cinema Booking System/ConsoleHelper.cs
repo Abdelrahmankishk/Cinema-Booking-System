@@ -46,15 +46,30 @@ namespace Cinema_Booking_System
                     {
                         throw new Exception("Price cannot be negative.");
                     }
-                    Console.Write("Enter Discount Amount: ");
-                    Discount = double.Parse(Console.ReadLine()!);
-                    if (Discount < 0)
+
+                    //Console.Write("Enter Discount Amount: ");
+                    //Discount = double.Parse(Console.ReadLine()!);
+                    //if (Discount < 0)
+                    //{
+                    //    throw new Exception("Discount cannot be negative.");
+                    //}
+
+                    switch(ticketType)
                     {
-                        throw new Exception("Discount cannot be negative.");
+                        case 0:
+                            ticket = new StandardTicket(movieName, ticketPrice, seatLocation);
+                            break;
+                        case 1:
+                            ticket = new VIPTicket(movieName, ticketPrice, false);
+                            break;
+                        case 2:
+                            ticket = new IMAXTicket(movieName, ticketPrice, false);
+                            break;
+                        default:
+                            ticket = new StandardTicket(movieName, ticketPrice, seatLocation);
+                            break;
                     }
 
-                    ticket = new Ticket(movieName, (TicketType)ticketType, seatLocation, ticketPrice);
-                    
                     exit = !exit;
                 }
                 catch (Exception ex)

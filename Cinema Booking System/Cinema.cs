@@ -6,8 +6,27 @@ using System.Threading.Tasks;
 
 namespace Cinema_Booking_System
 {
+    public class Projector
+    {
+        public void StartProjector()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Projector started.");
+            Console.ResetColor();
+        }
+
+        public void StopProjector()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Projector stopped.");
+            Console.ResetColor();
+        }
+
+    }
     public class Cinema
     {
+        Projector Projector = new();
+        public string? CinemaName { get; }
         Ticket[] _Tickets = new Ticket[20];
 
         public Ticket this[int index]
@@ -68,6 +87,18 @@ namespace Cinema_Booking_System
                     Console.WriteLine($"Ticket #{ticket.ID} | {ticket.MovieName} | {ticket.Type} | Seat: {ticket.Seat.Row}-{ticket.Seat.Number} | Price: {ticket.Price} EGP | After Tax: {ticket.PriceAfterTax} EGP");
                 }
             }
+        }
+        public void OpenCinema() { 
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("========== Cinema Opened ==========");
+            Console.ResetColor();
+            Projector.StartProjector();
+        }
+        public void CloseCinema() { 
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("========== Cinema Closed ==========");
+            Console.ResetColor();
+            Projector.StopProjector();
         }
     }
 }

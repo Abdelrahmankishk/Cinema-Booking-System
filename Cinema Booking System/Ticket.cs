@@ -25,11 +25,9 @@ namespace Cinema_Booking_System
             MovieName = movieName;
             Type = type;
             Price = price;
+
             ticketCounter++;
             ID = ticketCounter;
-        }
-        public Ticket(string MovieName) : this(MovieName, TicketType.Standard, 50)
-        {
         }
         static int ticketCounter = 0;
         static double TaxPercent = 0.14;

@@ -10,7 +10,7 @@ namespace Cinema_Booking_System
     {
         bool hasLoungeAccess;
         decimal ServiceFee = 50.00m;
-        public VIPTicket(string movieName, double price, bool hasLoungeAccess, decimal ServiceFee) : base(movieName, TicketType.VIP, price)
+        public VIPTicket(string movieName, double price, bool hasLoungeAccess, decimal ServiceFee = 50.00m) : base(movieName, TicketType.VIP, price)
         {
             this.hasLoungeAccess = hasLoungeAccess;
             this.ServiceFee = ServiceFee;
