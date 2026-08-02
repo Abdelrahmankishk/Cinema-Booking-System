@@ -14,9 +14,9 @@ namespace Cinema_Booking_System
             Seat = seat;
         }
 
-        public override string ToString()
+        public override string PrintTicket()
         {
-            return base.ToString() + $" | Seat: {Seat.Row}-{Seat.Number}";
+            return base.PrintTicket() + $" | Seat: {Seat.Row}-{Seat.Number}"; ;
         }
     }
 }

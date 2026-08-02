@@ -74,15 +74,15 @@ namespace Cinema_Booking_System
 
         }
 
-        public void PrintTicket()
-        {
-                Console.WriteLine("===== Ticket Info =====");
-                Console.WriteLine($"Movie   : {MovieName}");
-                Console.WriteLine($"Type    : {Type}");
-                Console.WriteLine($"Seat    : {Seat.Row}{Seat.Number}");
-                Console.WriteLine($"Price   : {Price:N2}");
-                Console.WriteLine($"Total (14% tax)   : {PriceAfterTax:N2}");
-        }
+        //public void PrintTicket()
+        //{
+        //        Console.WriteLine("===== Ticket Info =====");
+        //        Console.WriteLine($"Movie   : {MovieName}");
+        //        Console.WriteLine($"Type    : {Type}");
+        //        Console.WriteLine($"Seat    : {Seat.Row}{Seat.Number}");
+        //        Console.WriteLine($"Price   : {Price:N2}");
+        //        Console.WriteLine($"Total (14% tax)   : {PriceAfterTax:N2}");
+        //}
 
         public static void GetTotalTickets()
         {
@@ -93,9 +93,31 @@ namespace Cinema_Booking_System
             Console.WriteLine();
         }
 
-        public override string ToString()
+        public virtual string PrintTicket()
         {
             return $"Ticket #{ID} | Type: {Type} | {movieName} | Price: {Price} EGP | After Tax: {PriceAfterTax} EGP";
+        }
+        public void setPrice(double price)
+        {
+            if (price > 0)
+            {
+                Price = price;
+            }
+            else
+            {
+                throw new ArgumentException("Price must be greater than zero.");
+            }
+        }
+        public void setPrice(double Base , float multiplier)
+        {
+            if (Base > 0 && multiplier > 0)
+            {
+                Price = Base * multiplier;
+            }
+            else
+            {
+                throw new ArgumentException("Base and multiplier must be greater than zero.");
+            }
         }
     }
 }

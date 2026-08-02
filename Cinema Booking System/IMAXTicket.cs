@@ -14,10 +14,11 @@ namespace Cinema_Booking_System
             this.Is3D = Is3D;
             
         }
-        
-        public override string ToString()
+
+        public override string PrintTicket()
         {
-            return base.ToString() + $" | IMAX 3D: {(Is3D ? "Yes" : "No")}";
+            return base.PrintTicket() + $" | IMAX 3D: {(Is3D ? "Yes" : "No")}";
         }
+        
     }
 }

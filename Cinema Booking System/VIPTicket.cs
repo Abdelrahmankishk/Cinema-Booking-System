@@ -16,9 +16,10 @@ namespace Cinema_Booking_System
             this.ServiceFee = ServiceFee;
         }
 
-        public override string ToString()
+        public override string PrintTicket()
         {
-            return base.ToString() + $" | Lounge Access: {(hasLoungeAccess ? "Yes" : "No")} | Service Fee: {ServiceFee} EGP";
+            return base.PrintTicket() + $" | Lounge Access: {(hasLoungeAccess ? "Yes" : "No")} | Service Fee: {ServiceFee} EGP";
         }
+
     }
 }
