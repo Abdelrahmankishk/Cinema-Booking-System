@@ -7,7 +7,7 @@ The project begins with basic ticket booking functionality and gradually evolves
 
 ## 📖 Project Overview
 
-The Cinema Booking System has evolved into a modular, object-oriented console application that demonstrates core and intermediate C# concepts. The system now supports multiple ticket types, cinema management, runtime polymorphism, method overloading, and reusable ticket processing while maintaining a clean and extensible architecture.
+The Cinema Booking System has evolved into a modular, extensible console application that demonstrates object-oriented design using C#. The project now incorporates interfaces, polymorphism, object cloning, and ticket lifecycle management, making the system more flexible, reusable, and maintainable.
 
 ---
 
@@ -21,13 +21,17 @@ The Cinema Booking System has evolved into a modular, object-oriented console ap
 - Automatically generate unique ticket IDs.
 - Calculate ticket prices with 14% tax.
 - Update ticket prices using overloaded methods.
-- Store and manage tickets inside a cinema.
+- Store and manage tickets within a cinema.
 - Search and retrieve tickets.
 - Generate unique booking references.
 - Calculate group booking discounts.
-- Open and close the cinema using a projector.
-- Print ticket information polymorphically.
-- Process any ticket type through a common interface.
+- Open and close the cinema using composition.
+- Print ticket information using runtime polymorphism.
+- Process tickets through a common base class.
+- Standardize printing using custom interfaces.
+- Track ticket booking and cancellation status.
+- Clone tickets using deep copying.
+- Print collections of printable objects using interface polymorphism.
 
 ---
 
@@ -43,12 +47,17 @@ The Cinema Booking System has evolved into a modular, object-oriented console ap
 - Method Overloading
 - Method Overriding
 - Runtime Polymorphism
+- Interface Polymorphism
+- Custom Interfaces
+- Multiple Interface Implementation
 - Inheritance
 - Composition
 - Static Members
 - Static Utility Classes
 - Indexers
 - Arrays
+- Object Cloning (`ICloneable`)
+- Deep Copy
 - Data Validation
 - Console Applications
 
@@ -60,54 +69,41 @@ The Cinema Booking System has evolved into a modular, object-oriented console ap
 ========== Cinema Opened ==========
 Projector started.
 
-========== Ticket Booking ==========
-
-Enter data for Ticket 1:
-Movie Name: Inception
-Ticket Type (0 = Standard, 1 = VIP, 2 = IMAX): 0
-Seat Row: A
-Seat Number: 5
-Price: 150
-
-Enter data for Ticket 2:
-Movie Name: Avengers
-Ticket Type (0 = Standard, 1 = VIP, 2 = IMAX): 1
-Seat Row: B
-Seat Number: 5
-Price: 200
-
-Enter data for Ticket 3:
-Movie Name: Dune
-Ticket Type (0 = Standard, 1 = VIP, 2 = IMAX): 2
-Seat Row: B
-Seat Number: 8
-Price: 180
-
-========== SetPrice Test ==========
-
-Setting price directly: 150
-Setting price using multiplier: 1.5
-
 ========== All Tickets ==========
 
-Ticket #1 | Type: Standard | Inception | Price: 150 EGP | After Tax: 171 EGP | Seat: A-5
+[Ticket #1] Type: Standard | Inception | Price: 80 EGP | After Tax: 91.2 EGP | Seat: A-5 | Booked: No
 
-Ticket #2 | Type: VIP | Avengers | Price: 200 EGP | After Tax: 228 EGP | Lounge Access: Yes | Service Fee: 50 EGP
+[Ticket #2] Type: VIP | Avengers | Price: 200 EGP | After Tax: 228 EGP | Lounge Access: Yes | Service Fee: 50 EGP | Booked: No
 
-Ticket #3 | Type: IMAX | Dune | Price: 210 EGP | After Tax: 239.4 EGP | IMAX 3D: Yes
+[Ticket #3] Type: IMAX | Dune | Price: 160 EGP | After Tax: 182.4 EGP | IMAX 3D: Yes | Booked: No
 
-========== Statistics ==========
+========== Clone Test ==========
 
-Total Tickets Created: 4
+Cloned:
+[Ticket #4] Type: Standard | Interstellar | Price: 80 EGP | After Tax: 91.2 EGP | Seat: Z-99 | Booked: Yes
 
-========== Process Single Ticket ==========
+Original:
+[Ticket #1] Type: Standard | Inception | Price: 80 EGP | After Tax: 91.2 EGP | Seat: A-5 | Booked: No
 
-Ticket #4 | Type: VIP | Avengers | Price: 225 EGP | After Tax: 256.5 EGP | Lounge Access: Yes | Service Fee: 50 EGP
+========== After Booking ==========
 
-========== Generating Booking References ==========
+Ticket booked successfully.
 
-Booking Reference 1: BK-1
-Booking Reference 2: BK-2
+[Ticket #1] Type: Standard | Inception | Price: 80 EGP | After Tax: 91.2 EGP | Seat: A-5 | Booked: Yes
+
+========== After Canceling ==========
+
+Ticket cancelled successfully.
+
+[Ticket #1] Type: Standard | Inception | Price: 80 EGP | After Tax: 91.2 EGP | Seat: A-5 | Booked: No
+
+========== BookingHelper.PrintAll ==========
+
+[Ticket #1] Type: Standard | Inception | Price: 80 EGP | After Tax: 91.2 EGP | Seat: A-5 | Booked: No
+
+[Ticket #2] Type: VIP | Avengers | Price: 200 EGP | After Tax: 228 EGP | Lounge Access: Yes | Service Fee: 50 EGP | Booked: No
+
+[Ticket #3] Type: IMAX | Dune | Price: 160 EGP | After Tax: 182.4 EGP | IMAX 3D: Yes | Booked: No
 
 Projector stopped.
 
