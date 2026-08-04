@@ -23,7 +23,7 @@ namespace Cinema_Booking_System
         
         public void PrintItself()
         {
-            Console.WriteLine(PrintTicket());
+            Console.WriteLine(PrintTicket() + $" | Booked: {(IsBooked ? "Yes" : "No")}");
         }
 
         public object Clone()

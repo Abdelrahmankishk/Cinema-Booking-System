@@ -101,9 +101,9 @@ namespace Cinema_Booking_System
         }
         public bool AddTicket(IUnifiedPrinting t)
         {
-            for (int i = 0; i < _Tickets.Length; i++)
+            for (int i = 0; i < _Tickets2.Length; i++)
             {
-                if (_Tickets[i] == null)
+                if (_Tickets2[i] == null)
                 {
                     _Tickets2[i] = t;
                     return true;
@@ -117,11 +117,11 @@ namespace Cinema_Booking_System
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("========== All Tickets ==========");
             Console.ResetColor();
-            foreach (var ticket in _Tickets)
+            foreach (var ticket in _Tickets2)
             {
                 if (ticket != null)
                 {
-                    Console.WriteLine(ticket.PrintTicket());
+                    ticket.PrintItself();
                 }
             }
             Console.WriteLine();
@@ -151,23 +151,23 @@ namespace Cinema_Booking_System
 
         public void BookTicket(IUnifiedPrinting ticket)
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("--- After Booking ---");
-            Console.ResetColor();
             if (ticket != null)
             {
                 if (!ticket.IsBooked)
                 {
+                    ticket.IsBooked = true;
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Ticket booked successfully.");
                     Console.ResetColor();
                     ticket.PrintItself();
+                    Console.WriteLine();
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Ticket is already booked.");
                     Console.ResetColor();
+                    Console.WriteLine();
                 }
             }
             else
@@ -175,27 +175,28 @@ namespace Cinema_Booking_System
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Enter a Valid Ticket!");
                 Console.ResetColor();
+                Console.WriteLine();
             }
         }
         public void CancelTicket(IUnifiedPrinting ticket)
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("--- After Cancellation ---");
-            Console.ResetColor();
             if (ticket != null)
             {
                 if (ticket.IsBooked)
                 {
+                    ticket.IsBooked = false;
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Ticket cancelled successfully.");
                     Console.ResetColor();
                     ticket.PrintItself();
+                    Console.WriteLine();
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Ticket is not booked yet.");
                     Console.ResetColor();
+                    Console.WriteLine();
                 }
             }
             else
@@ -203,6 +204,7 @@ namespace Cinema_Booking_System
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Enter a Valid Ticket!");
                 Console.ResetColor();
+                Console.WriteLine();
             }
         }
     }

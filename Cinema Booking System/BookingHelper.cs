@@ -29,10 +29,14 @@ namespace Cinema_Booking_System
 
         public static void PrintPrintableTickets(List<IUnifiedPrinting> tickets)
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("==========  BookingHelper.PrintAll ==========");
+            Console.ResetColor();
             foreach (var ticket in tickets)
             {
                 ticket.PrintItself();
             }
+            Console.WriteLine();
         }
     }
 }

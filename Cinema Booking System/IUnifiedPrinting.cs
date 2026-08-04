@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cinema_Booking_System
 {
-    public interface IUnifiedPrinting
+    public interface IUnifiedPrinting : ICloneable
     {
-        bool IsBooked { get; }
+        bool IsBooked { get; set; }
         void PrintItself();
     }
 }

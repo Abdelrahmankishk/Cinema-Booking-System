@@ -104,7 +104,7 @@ namespace Cinema_Booking_System
 
         public virtual string PrintTicket()
         {
-            return $"Ticket #{ID} | Type: {Type} | {movieName} | Price: {Price} EGP | After Tax: {PriceAfterTax} EGP";
+            return $"[Ticket #{ID}] Type: {Type} | {movieName} | Price: {Price} EGP | After Tax: {PriceAfterTax} EGP";
         }
         public void setPrice(double price)
         {
