@@ -7,7 +7,7 @@ The project begins with basic ticket booking functionality and gradually evolves
 
 ## 📖 Project Overview
 
-The application has evolved into a more structured Cinema Booking System that demonstrates fundamental and intermediate Object-Oriented Programming (OOP) concepts. It now supports multiple ticket types through inheritance, automatic ticket management, cinema operations, and composition while maintaining a modular and extensible design.
+The Cinema Booking System has evolved into a modular, object-oriented console application that demonstrates core and intermediate C# concepts. The system now supports multiple ticket types, cinema management, runtime polymorphism, method overloading, and reusable ticket processing while maintaining a clean and extensible architecture.
 
 ---
 
@@ -18,39 +18,39 @@ The application has evolved into a more structured Cinema Booking System that de
   - Standard Ticket
   - VIP Ticket
   - IMAX Ticket
-- Assign seats for standard tickets.
 - Automatically generate unique ticket IDs.
 - Calculate ticket prices with 14% tax.
-- Manage tickets within a cinema.
+- Update ticket prices using overloaded methods.
+- Store and manage tickets inside a cinema.
 - Search and retrieve tickets.
 - Generate unique booking references.
 - Calculate group booking discounts.
-- Manage cinema operations (Open/Close).
-- Simulate a projector using composition.
-- Display ticket-specific information through polymorphism.
+- Open and close the cinema using a projector.
+- Print ticket information polymorphically.
+- Process any ticket type through a common interface.
 
 ---
 
 ## 🧠 OOP Concepts Covered
 
-- Classes
-- Objects
+- Classes & Objects
 - Enums
 - Structs
 - Encapsulation
 - Properties
 - Constructor Overloading
 - Constructor Chaining
-- Static Fields & Methods
+- Method Overloading
+- Method Overriding
+- Runtime Polymorphism
+- Inheritance
+- Composition
+- Static Members
+- Static Utility Classes
 - Indexers
 - Arrays
 - Data Validation
-- Inheritance
-- Method Overriding
-- Polymorphism
-- Composition
-- Sealed Classes
-- Console Input & Output
+- Console Applications
 
 ---
 
@@ -60,22 +60,57 @@ The application has evolved into a more structured Cinema Booking System that de
 ========== Cinema Opened ==========
 Projector started.
 
+========== Ticket Booking ==========
+
+Enter data for Ticket 1:
+Movie Name: Inception
+Ticket Type (0 = Standard, 1 = VIP, 2 = IMAX): 0
+Seat Row: A
+Seat Number: 5
+Price: 150
+
+Enter data for Ticket 2:
+Movie Name: Avengers
+Ticket Type (0 = Standard, 1 = VIP, 2 = IMAX): 1
+Seat Row: B
+Seat Number: 5
+Price: 200
+
+Enter data for Ticket 3:
+Movie Name: Dune
+Ticket Type (0 = Standard, 1 = VIP, 2 = IMAX): 2
+Seat Row: B
+Seat Number: 8
+Price: 180
+
+========== SetPrice Test ==========
+
+Setting price directly: 150
+Setting price using multiplier: 1.5
+
 ========== All Tickets ==========
 
-Ticket #1 | Inception | Price: 120 EGP | After Tax: 136.80 EGP | Seat: A-5
+Ticket #1 | Type: Standard | Inception | Price: 150 EGP | After Tax: 171 EGP | Seat: A-5
 
-Ticket #2 | Avengers | Price: 200 EGP | After Tax: 228.00 EGP | Lounge: Yes | Service Fee: 50 EGP
+Ticket #2 | Type: VIP | Avengers | Price: 200 EGP | After Tax: 228 EGP | Lounge Access: Yes | Service Fee: 50 EGP
 
-Ticket #3 | Dune | Price: 180 EGP | After Tax: 205.20 EGP | IMAX 3D: No
+Ticket #3 | Type: IMAX | Dune | Price: 210 EGP | After Tax: 239.4 EGP | IMAX 3D: Yes
 
 ========== Statistics ==========
 
-Total Tickets Created: 3
+Total Tickets Created: 4
 
-Booking Ref 1: BK-1
-Booking Ref 2: BK-2
+========== Process Single Ticket ==========
+
+Ticket #4 | Type: VIP | Avengers | Price: 225 EGP | After Tax: 256.5 EGP | Lounge Access: Yes | Service Fee: 50 EGP
+
+========== Generating Booking References ==========
+
+Booking Reference 1: BK-1
+Booking Reference 2: BK-2
 
 Projector stopped.
+
 ========== Cinema Closed ==========
 ```
 
