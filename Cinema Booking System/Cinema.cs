@@ -74,9 +74,11 @@ namespace Cinema_Booking_System
         }
         public Ticket this[string movieName]
         {
-            get {
-                foreach (var ticket in _Tickets) { 
-                 if (ticket != null && ticket.MovieName.ToLower() == movieName.ToLower())
+            get
+            {
+                foreach (var ticket in _Tickets)
+                {
+                    if (ticket != null && ticket.MovieName.ToLower() == movieName.ToLower())
                     {
                         return ticket;
                     }
@@ -87,11 +89,23 @@ namespace Cinema_Booking_System
 
         public bool AddTicket(Ticket t)
         {
-            for (int  i = 0;  i < _Tickets.Length;  i++)
+            for (int i = 0; i < _Tickets.Length; i++)
             {
-                if( _Tickets[i] == null)
+                if (_Tickets[i] == null)
                 {
                     _Tickets[i] = t;
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool AddTicket(IUnifiedPrinting t)
+        {
+            for (int i = 0; i < _Tickets.Length; i++)
+            {
+                if (_Tickets[i] == null)
+                {
+                    _Tickets2[i] = t;
                     return true;
                 }
             }
@@ -119,18 +133,77 @@ namespace Cinema_Booking_System
             Console.WriteLine(ticket.PrintTicket());
             Console.ResetColor();
         }
-        public void OpenCinema() { 
+        public void OpenCinema()
+        {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("========== Cinema Opened ==========");
             Console.ResetColor();
             Projector.StartProjector();
         }
-        public void CloseCinema() {
+        public void CloseCinema()
+        {
             Projector.StopProjector();
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("========== Cinema Closed ==========");
             Console.ResetColor();
-       
+
+        }
+
+        public void BookTicket(IUnifiedPrinting ticket)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("--- After Booking ---");
+            Console.ResetColor();
+            if (ticket != null)
+            {
+                if (!ticket.IsBooked)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Ticket booked successfully.");
+                    Console.ResetColor();
+                    ticket.PrintItself();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Ticket is already booked.");
+                    Console.ResetColor();
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Enter a Valid Ticket!");
+                Console.ResetColor();
+            }
+        }
+        public void CancelTicket(IUnifiedPrinting ticket)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("--- After Cancellation ---");
+            Console.ResetColor();
+            if (ticket != null)
+            {
+                if (ticket.IsBooked)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Ticket cancelled successfully.");
+                    Console.ResetColor();
+                    ticket.PrintItself();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Ticket is not booked yet.");
+                    Console.ResetColor();
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Enter a Valid Ticket!");
+                Console.ResetColor();
+            }
         }
     }
 }

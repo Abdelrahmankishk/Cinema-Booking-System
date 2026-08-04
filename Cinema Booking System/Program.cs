@@ -28,7 +28,7 @@ namespace Cinema_Booking_System
                 Console.WriteLine($"Enter data for Ticket {i + 1}: ");
                 Console.ResetColor();
 
-                Ticket ticket1 = ConsoleHelper.TicketInput(movieName!, ticketType, seatLocation, ticketPrice, Discount);
+                IUnifiedPrinting ticket1 = ConsoleHelper.TicketInput(movieName!, ticketType, seatLocation, ticketPrice, Discount);
                 cinema.AddTicket(ticket1);
             }
             #endregion

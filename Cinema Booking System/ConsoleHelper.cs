@@ -8,9 +8,9 @@ namespace Cinema_Booking_System
 {
     public class ConsoleHelper
     {
-        public static Ticket TicketInput(string movieName, int ticketType, SeatLocation seatLocation, double ticketPrice,double Discount)
+        public static IUnifiedPrinting TicketInput(string movieName, int ticketType, SeatLocation seatLocation, double ticketPrice,double Discount)
         {
-            Ticket ticket = default!;
+            IUnifiedPrinting ticket = default!;
             bool exit = false;
             do
             {
@@ -81,7 +81,7 @@ namespace Cinema_Booking_System
             }
             while (!exit);
             Console.WriteLine();
-             return ticket;
+            return ticket;
         }
 
         
