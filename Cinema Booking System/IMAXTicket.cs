@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Cinema_Booking_System
 {
-    public class IMAXTicket : Ticket
+    public class IMAXTicket : Ticket, IUnifiedPrinting, ICloneable
     {
+        public bool IsBooked { get; set; }
         bool Is3D;
-        public IMAXTicket(string movieName, double price, bool Is3D) : base(movieName, TicketType.IMAX, (Is3D ? price + 30.00 : price))
+        public IMAXTicket(string movieName, double price, bool Is3D, bool isBooked = false) : base(movieName, TicketType.IMAX, (Is3D ? price + 30.00 : price))
         {
             this.Is3D = Is3D;
-            
+            IsBooked = isBooked;
         }
 
         public override string PrintTicket()
@@ -20,5 +21,14 @@ namespace Cinema_Booking_System
             return base.PrintTicket() + $" | IMAX 3D: {(Is3D ? "Yes" : "No")}";
         }
         
+        public void PrintItself()
+        {
+            Console.WriteLine(PrintTicket());
+        }
+
+        public object Clone()
+        {
+            return new IMAXTicket(this.MovieName, this.Price, this.Is3D, this.IsBooked);
+        }
     }
 }

@@ -26,5 +26,13 @@ namespace Cinema_Booking_System
             Counter++;
             return $"BK-{Counter}";
         }
+
+        public static void PrintPrintableTickets(List<IUnifiedPrinting> tickets)
+        {
+            foreach (var ticket in tickets)
+            {
+                ticket.PrintItself();
+            }
+        }
     }
 }

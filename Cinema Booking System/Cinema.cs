@@ -28,9 +28,32 @@ namespace Cinema_Booking_System
         Projector Projector = new();
         public string? CinemaName { get; }
         Ticket[] _Tickets = new Ticket[20];
+        IUnifiedPrinting[] _Tickets2 = new IUnifiedPrinting[20];
 
 
-        public Ticket this[int index]
+        #region Ticket (abstract) Class Indexer
+
+        //public Ticket this[int index]
+        //{
+        //    get
+        //    {
+        //        if (index < 0 || index >= _Tickets.Length)
+        //        {
+        //            return null!;
+        //        }
+        //        return _Tickets[index];
+        //    }
+        //    set
+        //    {
+        //        if (index < 0 || index >= _Tickets.Length)
+        //        {
+        //            throw new IndexOutOfRangeException("Index is out of range.");
+        //        }
+        //        _Tickets[index] = value;
+        //    }
+        //}
+        #endregion
+        public IUnifiedPrinting this[int index]
         {
             get
             {
@@ -38,7 +61,7 @@ namespace Cinema_Booking_System
                 {
                     return null!;
                 }
-                return _Tickets[index];
+                return _Tickets2[index];
             }
             set
             {
@@ -46,7 +69,7 @@ namespace Cinema_Booking_System
                 {
                     throw new IndexOutOfRangeException("Index is out of range.");
                 }
-                _Tickets[index] = value;
+                _Tickets2[index] = value;
             }
         }
         public Ticket this[string movieName]

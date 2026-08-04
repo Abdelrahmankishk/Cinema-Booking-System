@@ -16,6 +16,15 @@ namespace Cinema_Booking_System
     public struct SeatLocation {
         public char Row;
         public int Number;
+
+        public SeatLocation DeepCopy()
+        {
+            return new SeatLocation
+            {
+                Row = this.Row,
+                Number = this.Number
+            };
+        }
     }
     public abstract class Ticket
     {
